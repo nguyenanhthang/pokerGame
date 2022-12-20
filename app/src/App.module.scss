@@ -69,7 +69,7 @@ h1 {
   width: 500px;
   height: 500px;
   display: grid;
-  grid-template: repeat(9, 1fr)/repeat(9, 1fr);
+  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
   gap: 1rem;
 }
 
