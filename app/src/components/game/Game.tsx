@@ -12,7 +12,7 @@ function Header(props: HeaderProps) {
 return <div>{props.children}</div>;
 }
 const Game = () => {
-    const [history, setHistory] = useState([Array(81).fill(null)]);
+    const [history, setHistory] = useState([Array(9).fill(null)]);
     console.log(history);
     const [stepNumber, setStepNumber] = useState(0);
     const [xIsNext, setXisNext] = useState(true);
