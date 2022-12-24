@@ -9,4 +9,16 @@ export const ContainerLogin = styled.div`
   display:flex;
   justify-content: center;
   align-items:center;
+  position:relative;
+  :after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: #000;
+    opacity: .3;
+    z-index: 1;
+    }
 `

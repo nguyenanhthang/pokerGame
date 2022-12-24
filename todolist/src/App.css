@@ -37,3 +37,14 @@
     transform: translateY(0px);
   }
 }
+
+button,
+input,
+[tabindex] {
+outline: none;
+border: none;
+}
+a[href] {
+color: var(--text-color);
+text-decoration: none;
+}

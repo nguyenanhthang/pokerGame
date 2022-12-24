@@ -1,5 +1,7 @@
 import React from 'react'
-import { FormLoginContainer , HeaderFormLogin, TitleFormLogin} from './formLogin.styled'
+import { FormLoginContainer , FormUserLogin, HeaderFormLogin, InputWrapper, TitleFormLogin} from './formLogin.styled'
+import Input from '../../../../components/Input/Input';
+import Button from '../../../../components/Button/Button';
 
 interface Props {
     title:string;
@@ -11,6 +13,17 @@ const FormLogin:React.FC<Props> = ({title,header}) => {
         <FormLoginContainer>
             <HeaderFormLogin>{header}</HeaderFormLogin>
             <TitleFormLogin>{title}</TitleFormLogin>
+            <FormUserLogin>
+                <InputWrapper>
+                    <Input size={58} type='text' placeHolder='UserName'/>
+                </InputWrapper>
+                <InputWrapper>
+                    <Input size={58} type='password' placeHolder='Password'/>
+                </InputWrapper>
+                <InputWrapper>
+                    <Button size={100} title='Login'/>
+                </InputWrapper>
+            </FormUserLogin>
         </FormLoginContainer>
     )
 }

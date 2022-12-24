@@ -1,10 +1,16 @@
 import React from 'react'
+import { HomePageContainer,HomePageContainerParent } from './Home.styled'
+import ListTasks from '../../components/ListTasks/ListTasks'
 
-type Props = {}
+interface Props {}
 
-const Home = (props: Props) => {
+const Home:React.FC<Props> = ( ) => {
   return (
-    <div>Home</div>
+      <HomePageContainerParent>
+        <HomePageContainer>
+          <ListTasks />
+        </HomePageContainer>
+      </HomePageContainerParent>
   )
 }
 

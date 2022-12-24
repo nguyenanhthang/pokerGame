@@ -4,11 +4,12 @@ import { InputForm } from './Input.styled';
 interface Props{
     type:string;
     placeHolder:string;
+    size:number;
 }
 
-const Input:React.FC<Props> = ({type,placeHolder}) => {
+const Input:React.FC<Props> = ({size,type,placeHolder}) => {
     return (
-        <InputForm type={type} placeholder={placeHolder}/>
+        <InputForm size={size} type={type} placeholder={placeHolder}/>
     )
 }
 

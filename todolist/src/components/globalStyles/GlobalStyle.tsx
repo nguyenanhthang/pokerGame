@@ -1,14 +1,11 @@
 import React from 'react'
-import { ContainerParent } from './GlobalStyle.style'
-
+import './GlobalStyle.module.scss';
 interface Props {
     children: JSX.Element|JSX.Element[]
 }
 
 const GlobalStyle:React.FC<Props> = ({children}) => {
-    return (
-        <ContainerParent>{children}</ContainerParent>
-    )
+    return React.Children.only(children)
 }
 
 export default GlobalStyle
