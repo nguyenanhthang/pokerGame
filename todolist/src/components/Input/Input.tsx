@@ -5,11 +5,12 @@ interface Props{
     type:string;
     placeHolder:string;
     size:number;
+    onChange?:(e:any)=>void
 }
 
-const Input:React.FC<Props> = ({size,type,placeHolder}) => {
+const Input:React.FC<Props> = ({size,type,placeHolder,onChange}) => {
     return (
-        <InputForm size={size} type={type} placeholder={placeHolder}/>
+        <InputForm size={size} type={type} onChange={onChange} placeholder={placeHolder}/>
     )
 }
 
