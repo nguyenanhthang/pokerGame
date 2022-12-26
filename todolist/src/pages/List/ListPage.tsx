@@ -3,43 +3,42 @@ import { ProFormRadio, ProFormSwitch, ProList } from '@ant-design/pro-components
 import { Progress, Tag } from 'antd';
 import { useState } from 'react';
 import { ListPageParent } from './ListPage.styled';
+import { useAppSelector,useAppDispatch } from '../../app/hooks';
+import { setDeleteList } from '../../features/list/ListSlice';
 
-const data = [
-    'Sparrows sky',
-    'Ant Design',
-    'Ant Financial Experience Technology',
-    'TechUI',
-    'TechUI 2.0',
-    'Bigfish',
-    'Umi',
-    'Ant Design Pro',
-].map((item) => ({
-    title: item,
-    subTitle: <Tag color="#5BD8A6">Language</Tag>,
-    actions: [<a key="run">Invite</a>, <a key="delete">Delete</a>],
-    avatar: 'https://gw.alipayobjects.com/zos/antfincdn/UCSiy1j6jx/xingzhuang.svg',
-    content: (
-        <div
-            style={{
-                flex: 1,
-            }}
-        >
-            <div
-                style={{
-                    width: 200,
-                }}
-            >
-                <div>Announcing</div>
-                <Progress percent={80} />
-            </div>
-        </div>
-    ),
-}));
 type Props = {}
 
 const ListPage: React.FC<Props> = () => {
+    const dispatch = useAppDispatch()
     const [cardActionProps, setCardActionProps] = useState<'actions' | 'extra'>('extra');
-
+    const data = useAppSelector((state)=> state.list.ListData)
+    const handleDelete = (id:number)=>{
+        dispatch(setDeleteList(id))
+        console.log(id);
+    }
+    let list = data.map((item,index) =>({
+        key:index,
+        title: item.title,
+        subTitle: <Tag color="#5BD8A6">Language</Tag>,
+        actions: [<a key="run">Invite</a>, <a  onClick={() => handleDelete(index)} key="delete">Delete</a>],
+        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/UCSiy1j6jx/xingzhuang.svg',
+        content: (
+            <div
+                style={{
+                    flex: 1,
+                }}
+            >
+                <div
+                    style={{
+                        width: 200,
+                    }}
+                >
+                    <div>Announcing</div>
+                    <Progress percent={item.progress} />
+                </div>
+            </div>
+        ),
+    }))
     const [ghost, setGhost] = useState<boolean>(true);
     return (
         <ListPageParent>
@@ -50,6 +49,7 @@ const ListPage: React.FC<Props> = () => {
                 color:'#ffff'
             }}
         >
+            
             <ProFormRadio.Group
                 label="actions"
                 options={[
@@ -104,7 +104,7 @@ const ListPage: React.FC<Props> = () => {
                     },
                 }}
                 headerTitle="Card list display"
-                dataSource={data}
+                dataSource={list}
             />
         </div>
         </ListPageParent>

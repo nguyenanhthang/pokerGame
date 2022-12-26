@@ -25,7 +25,7 @@ const FormLogin:React.FC<Props> = ({title,header}) => {
     const handleLogin = ()=>{
         dataPeople.map((el,i)=>{
             if(el.username===userLogin&& el.password===passwordLogin){
-                return Navigate('/home')
+                return Navigate('/home/list')
             }
             return alert('incorrect !')
         })

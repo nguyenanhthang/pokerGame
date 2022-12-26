@@ -1,7 +1,13 @@
-import React from 'react';
+import React,{useState} from 'react';
 import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
+import { Button, Dropdown,Modal } from 'antd';
 import { ContainerFilter,ActionFilter } from './Filter.styled';
+import {
+    FolderAddOutlined
+} from '@ant-design/icons';
+import PopUp from '../popup/PopUp';
+import { useAppDispatch,useAppSelector } from '../../app/hooks';
+import { setInputAddTitle,setInputAddProgress,setPushList } from '../../features/list/ListSlice';
 const items: MenuProps['items'] = [
     {
         key: '1',
@@ -33,6 +39,21 @@ interface Props {
 }
 
 const Filter: React.FC<Props> = () => {
+    const dispatch = useAppDispatch()
+    const title:string = useAppSelector((state)=> state.list.inputList.title)
+    const progress:number = useAppSelector((state)=> state.list.inputList.progress)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        dispatch(setPushList({title,progress}))
+        
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
     return (
         <ContainerFilter>
             <ActionFilter>
@@ -52,6 +73,17 @@ const Filter: React.FC<Props> = () => {
                 <Dropdown menu={{ items }} placement="bottom" arrow={{ pointAtCenter: true }}>
                     <Button>Sort</Button>
                 </Dropdown>
+            </ActionFilter>
+            <ActionFilter>
+                <Button onClick={showModal}>AddLists <span style={{fontSize:'1.4rem'}}><FolderAddOutlined /></span></Button>
+                <Modal footer={[<Button key="back" onClick={handleCancel}>
+                Cancel
+            </Button>,
+            <Button key="submit" type="primary" onClick={handleOk}>
+                Add List
+            </Button>]} title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                    <PopUp/>
+                </Modal>
             </ActionFilter>
         </ContainerFilter>
     )
