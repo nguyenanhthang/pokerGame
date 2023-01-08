@@ -1,0 +1,42 @@
+interface check{
+    id:number;
+    name:string;
+    coins:number;
+    avatar:string;
+    point:number;
+    card:any;
+}
+export const user:check[] =[
+    {
+        id:1,
+        name:'tu',
+        coins:10000,
+        avatar:'/static/images/avatar/1.jpg',
+        point:0,
+        card:[]
+    },
+    {
+        id:2,
+        name:'quyet',
+        coins:10000,
+        avatar:'/static/images/avatar/1.jpg',
+        point:0,
+        card:[]
+    },
+    {
+        id:3,
+        name:'thang',
+        coins:10000,
+        avatar:'/static/images/avatar/1.jpg',
+        point:0,
+        card:[]
+    },
+    {
+        id:4,
+        name:'tan',
+        coins:10000,
+        avatar:'/static/images/avatar/1.jpg',
+        point:0,
+        card:[]
+    },
+]

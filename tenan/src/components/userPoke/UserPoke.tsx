@@ -14,7 +14,7 @@ const UserPoke:React.FC<Props> = ({url,name,coins}) => {
                 Name: {name}
             </Typography>
             <Typography fontSize={'0.9rem'} variant="body1">
-                Coins: {coins}
+                Coins: {coins} $
             </Typography>
         </Box>
     )

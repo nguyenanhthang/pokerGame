@@ -4,7 +4,16 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/todolist
+/reduxtoolkit
+/redux-react-server-backend
+/reactQuery
+/reactQuer
+/mutiplechoice
+/liem
+/app
+/andtd
+/admin
 # testing
 /coverage
 
